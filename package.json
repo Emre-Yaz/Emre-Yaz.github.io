@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["react", "css", "spinners"],
+  "keywords": ["react", "css", "spinners", "node"],
   "author": "Emre Yaz",
   "license": "ISC"
 }
