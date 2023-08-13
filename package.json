@@ -2,8 +2,11 @@
   "name": "emre-yaz.github.io",
   "version": "1.0.0",
   "description": "test",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "prebuild":"rimraf dist",
+    "build": "rollup -c",
     "lint": "eslint '**/*.js'",
     "lint:fix": "prettier-eslint '**/*.js' --write"
   },
@@ -13,7 +16,10 @@
     }
   },
   "sint-staged": {
-    "*.js": ["npm run lint:fix", "git add"]
+    "*.js": [
+      "npm run lint:fix",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -34,6 +40,9 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "prettier-eslint": "^15.0.1",
-    "prettier-eslint-cli": "^7.1.0"
+    "prettier-eslint-cli": "^7.1.0",
+    "rimraf": "^5.0.1",
+    "rollup": "^3.28.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
   }
 }
