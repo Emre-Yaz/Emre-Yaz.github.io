@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "prebuild":"rimraf dist",
+    "prebuild": "rimraf dist",
     "build": "rollup -c",
     "lint": "eslint '**/*.js'",
     "lint:fix": "prettier-eslint '**/*.js' --write"
@@ -15,7 +15,7 @@
       "pre-commit": "lint-staged"
     }
   },
-  "sint-staged": {
+  "lint-staged": {
     "*.js": [
       "npm run lint:fix",
       "git add"
@@ -34,15 +34,20 @@
   "author": "Emre Yaz",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.22.11",
+    "@babel/preset-env": "^7.22.14",
+    "@babel/preset-react": "^7.22.5",
     "eslint": "^8.47.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-react": "^7.33.1",
+    "eslint-plugin-react": "^7.33.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "prettier-eslint": "^15.0.1",
     "prettier-eslint-cli": "^7.1.0",
     "rimraf": "^5.0.1",
     "rollup": "^3.28.0",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }

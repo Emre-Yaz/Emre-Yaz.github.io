@@ -1,5 +1,5 @@
 {
-  "extends": "eslint:recommended",
+  "extends": ["standard", "plugin:react/recommended"],
   "rules": {
     "no-console": "warn",
     "indent": ["error", 2],
