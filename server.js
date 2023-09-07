@@ -5,7 +5,7 @@ const port = 3000;
 app.use(express.static('FWB'));
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/FWB/index.html'); 
+    res.sendFile(__dirname + '/index.html'); 
 });
 
 app.get('/fwb_resume', (req, res) => {
