@@ -1,8 +1,0 @@
-{
-  "extends": ["standard", "plugin:react/recommended"],
-  "rules": {
-    "no-console": "warn",
-    "indent": ["error", 2],
-    "quotes": ["error", "single"]
-  }
-}
