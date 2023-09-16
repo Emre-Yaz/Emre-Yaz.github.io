@@ -5,23 +5,23 @@ const port = 3000;
 app.use(express.static('FWB'));
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html'); 
+    res.sendFile('/Users/ibrahimemreyaz/Desktop/Emre/Emre-Yaz.github.io/docs/index.html'); 
 });
 
 app.get('/fwb_resume', (req, res) => {
-    res.sendFile(__dirname + '/FWB/fwb_resume.html'); 
+    res.sendFile('/Users/ibrahimemreyaz/Desktop/Emre/Emre-Yaz.github.io/docs/fwb_resume.html'); 
 });
 
 app.get('/fwb_contact', (req, res) => {
-    res.sendFile(__dirname + '/FWB/fwb_contact.html'); 
+    res.sendFile('/Users/ibrahimemreyaz/Desktop/Emre/Emre-Yaz.github.io/docs/fwb_contact.html'); 
 });
 
 app.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/FWB/login.html'); 
+    res.sendFile('/Users/ibrahimemreyaz/Desktop/Emre/Emre-Yaz.github.io/docs/login.html'); 
 });
 
 app.get('/register', (req, res) => {
-    res.sendFile(__dirname + '/FWB/register.html'); 
+    res.sendFile('/Users/ibrahimemreyaz/Desktop/Emre/Emre-Yaz.github.io/docs/register.html'); 
 });
 
 app.listen(port, () => {
