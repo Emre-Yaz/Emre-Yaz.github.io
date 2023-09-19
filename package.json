@@ -4,9 +4,11 @@
   "description": "Emre Yaz's portfolio and resume website.",
   "main": "index.js",
   "scripts": {
-    "build": "npm install && npm run build-app",
-    "build-app": "npm run compile"
+    "start": "node backend/server.js",
+    "build-app": "npm run compile",
+    "compile": "npm install"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Emre-Yaz/Emre-Yaz.github.io.git"
