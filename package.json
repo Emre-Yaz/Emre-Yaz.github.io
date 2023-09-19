@@ -4,7 +4,8 @@
   "description": "Emre Yaz's portfolio and resume website.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm install && npm run build-app",
+    "build-app": "npm run compile"
   },
   "repository": {
     "type": "git",
