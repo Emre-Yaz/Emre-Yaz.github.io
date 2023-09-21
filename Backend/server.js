@@ -8,11 +8,11 @@ app.get('/', (req, res) => {
     res.sendFile('/../docs/index.html'); 
 });
 
-app.get('/fwb_resume', (req, res) => {
+app.get('/resume', (req, res) => {
     res.sendFile('/../docs/resume.html'); 
 });
 
-app.get('/fwb_contact', (req, res) => {
+app.get('/contact', (req, res) => {
     res.sendFile('/../docs/contact.html'); 
 });
 
