@@ -5,23 +5,23 @@ const port = 3000;
 app.use(express.static('docs'));
 
 app.get('/', (req, res) => {
-    res.sendFile('/Users/ibrahimemreyaz/Desktop/Emre/Emre-Yaz.github.io/docs/index.html'); 
+    res.sendFile('/../docs/index.html'); 
 });
 
 app.get('/fwb_resume', (req, res) => {
-    res.sendFile('/Users/ibrahimemreyaz/Desktop/Emre/Emre-Yaz.github.io/docs/fwb_resume.html'); 
+    res.sendFile('/../docs/resume.html'); 
 });
 
 app.get('/fwb_contact', (req, res) => {
-    res.sendFile('/Users/ibrahimemreyaz/Desktop/Emre/Emre-Yaz.github.io/docs/fwb_contact.html'); 
+    res.sendFile('/../docs/contact.html'); 
 });
 
 app.get('/login', (req, res) => {
-    res.sendFile('/Users/ibrahimemreyaz/Desktop/Emre/Emre-Yaz.github.io/docs/login.html'); 
+    res.sendFile('/../docs/login.html'); 
 });
 
 app.get('/register', (req, res) => {
-    res.sendFile('/Users/ibrahimemreyaz/Desktop/Emre/Emre-Yaz.github.io/docs/register.html'); 
+    res.sendFile('/../docs/register.html'); 
 });
 
 app.listen(port, () => {
