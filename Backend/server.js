@@ -1,31 +1,17 @@
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const app = express();
-const port = 3000; 
+const port = 3000;
 
-// Serve static files from the 'docs' directory
+const indexRouter = require('./routes/index');
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '..', 'views'));
+app.set('layout', 'layouts/layout'); // Remove __dirname here
+app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, '..', 'docs')));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'docs', 'index.html')); 
-});
+app.use('/', indexRouter);
 
-app.get('/resume', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'docs', 'resume.html')); 
-});
-
-app.get('/contact', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'docs', 'contact.html')); 
-});
-
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'docs', 'login.html')); 
-});
-
-app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'docs', 'register.html')); 
-});
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+app.listen(process.env.PORT || port);

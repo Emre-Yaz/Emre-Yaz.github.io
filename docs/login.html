@@ -7,11 +7,10 @@ h3{
 
 </style>
 
-{% for message in messages %}
-<h3>{{message}}</h3>
-{% endfor %}
+
+
 <form action="login" method="POST">
-    {% csrf_token %}
+    
     <p>Username:</p>
     <input type="text" name="username"/>
     <p>Password:</p>

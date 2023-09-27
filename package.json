@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node backend/server.js",
     "build": "npm run compile",
-    "compile": "npm install"
+    "compile": "npm install",
+    "devStart": "nodemon backend/server.js"
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Emre-Yaz/Emre-Yaz.github.io.git"
@@ -30,6 +30,12 @@
   },
   "homepage": "https://emre-yaz.github.io/",
   "dependencies": {
-    "express": "^4.18.2"
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1"
   }
 }
