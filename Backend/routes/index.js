@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 
-const helmet = require("helmet");
-app.use(helmet());
+//const helmet = require("helmet");
+//app.use(helmet());
 
 router.get("/test", (req, res) => {
   res.render(path.join(__dirname, "..", "..", "views", "index.ejs"));

@@ -5,8 +5,8 @@ const app = express();
 const port = 3000;
 const indexRouter = require("./routes/index");
 
-const helmet = require("helmet");
-app.use(helmet());
+//const helmet = require("helmet");
+//app.use(helmet());
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "..", "views"));
