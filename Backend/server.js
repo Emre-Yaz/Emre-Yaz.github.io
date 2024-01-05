@@ -8,6 +8,7 @@ const indexRouter = require("./routes/index");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
+const { body, validationResult } = require("express-validator");
 
 //const helmet = require("helmet");
 //app.use(helmet());
@@ -56,30 +57,42 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.post("/submit-form", (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const message = req.body.message;
+app.post(
+  "/submit-form",
+  [
+    body("name").trim().isLength({ min: 1 }).withMessage("Name is required"),
+    body("email").trim().isEmail().withMessage("Valid email is required"),
+    body("message")
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage("Message is required"),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+      const name = req.body.name;
+      const email = req.body.email;
+      const message = req.body.message;
 
-  // Email content
-  const mailOptions = {
-    from: "emreyaztest@gmail.com",
-    to: "ibrahimemreyaz@gmail.com",
-    subject: "New Message from Contact Form",
-    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-  };
+      const mailOptions = {
+        from: "emreyaztest@gmail.com",
+        to: "ibrahimemreyaz@gmail.com",
+        subject: "New Message from Contact Form",
+        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      };
 
-  // Send email
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send("Error sending email");
-    } else {
+      const info = await transporter.sendMail(mailOptions);
       console.log("Email sent: " + info.response);
       res.status(200).send("Message received and email sent successfully!");
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error sending email");
     }
-  });
-});
+  }
+);
 
 ///////////////////////////////////////////
 
