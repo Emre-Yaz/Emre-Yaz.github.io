@@ -32,6 +32,7 @@ app.use("/", indexRouter);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.json()); // Parse JSON bodies
 
 /////////////////////////////////t//////////
 
