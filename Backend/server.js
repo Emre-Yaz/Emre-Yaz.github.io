@@ -42,8 +42,7 @@ const oauth2Client = new google.auth.OAuth2(
 );
 
 oauth2Client.setCredentials({
-  refresh_token:
-    "1//04YRnPZ-QgYGECgYIARAAGAQSNwF-L9IrnhyaUNVfP8PC1a9fSl2bjJ9YytjgNtN61XqpqLkA-RqQNHCqU_cIkORG3PYgDBPz3cE",
+  refresh_token: REFRESH_TOKEN,
 });
 
 const transporter = nodemailer.createTransport({
@@ -53,8 +52,7 @@ const transporter = nodemailer.createTransport({
     user: "emreyaztest@gmail.com",
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    refreshToken:
-      "1//04YRnPZ-QgYGECgYIARAAGAQSNwF-L9IrnhyaUNVfP8PC1a9fSl2bjJ9YytjgNtN61XqpqLkA-RqQNHCqU_cIkORG3PYgDBPz3cE",
+    refreshToken: REFRESH_TOKEN,
     accessToken: oauth2Client.getAccessToken(), // Access token generated from refresh token
   },
 });
