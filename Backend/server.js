@@ -17,6 +17,15 @@ app.set("views", path.join(__dirname, "..", "views"));
 app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, "..", "docs")));
+app.use(
+  express.static("public", {
+    setHeaders: (res, path) => {
+      if (path.endsWith(".js")) {
+        res.setHeader("Content-Type", "application/javascript");
+      }
+    },
+  })
+);
 
 app.use("/", indexRouter);
 
