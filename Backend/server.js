@@ -42,7 +42,7 @@ const oauth2Client = new google.auth.OAuth2(
 );
 
 oauth2Client.setCredentials({
-  refresh_token: REFRESH_TOKEN,
+  refresh_token: process.env.REFRESH_TOKEN,
 });
 
 const transporter = nodemailer.createTransport({
@@ -52,7 +52,7 @@ const transporter = nodemailer.createTransport({
     user: "emreyaztest@gmail.com",
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    refreshToken: REFRESH_TOKEN,
+    refreshToken: process.env.REFRESH_TOKEN,
     accessToken: oauth2Client.getAccessToken(), // Access token generated from refresh token
   },
 });
