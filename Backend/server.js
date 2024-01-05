@@ -7,6 +7,7 @@ const port = 3000;
 const indexRouter = require("./routes/index");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
+const { google } = require("googleapis");
 
 //const helmet = require("helmet");
 //app.use(helmet());
@@ -22,11 +23,27 @@ app.use("/", indexRouter);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+///////////////////////////////////////////
+
+const oauth2Client = new google.auth.OAuth2(
+  process.env.CLIENT_ID,
+  process.env.CLIENT_SECRET,
+  "https://developers.google.com/oauthplayground" // Redirect URL
+);
+
+oauth2Client.setCredentials({
+  refresh_token: process.env.REFRESH_TOKEN,
+});
+
 const transporter = nodemailer.createTransport({
-  service: "Gmail",
+  service: "gmail",
   auth: {
+    type: "OAuth2",
     user: "emreyaztest@gmail.com",
-    pass: process.env.EMAIL_PASS,
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    refreshToken: process.env.REFRESH_TOKEN,
+    accessToken: oauth2Client.getAccessToken(), // Access token generated from refresh token
   },
 });
 
@@ -54,5 +71,7 @@ app.post("/submit-form", (req, res) => {
     }
   });
 });
+
+///////////////////////////////////////////
 
 app.listen(process.env.PORT || port);
