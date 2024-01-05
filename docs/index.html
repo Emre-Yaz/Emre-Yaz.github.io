@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="icon" type="image/png" href="../docs/img/favicon.svg" />
+    <link rel="icon" type="image/png" href="img/favicon.svg" />
   </head>
   <body class="homepage is-preload">
     <div id="page-wrapper">
@@ -351,23 +351,38 @@
           <div class="row">
             <div class="col-6 col-12-medium">
               <section>
-                <form method="post" action="#">
+                <form id="contactForm" method="post" action="/submit-form">
                   <div class="row gtr-50">
                     <div class="col-6 col-12-small">
-                      <input name="name" placeholder="Name" type="text" />
+                      <input
+                        name="name"
+                        id="nameInput"
+                        placeholder="Name"
+                        type="text"
+                      />
                     </div>
                     <div class="col-6 col-12-small">
-                      <input name="email" placeholder="Email" type="text" />
+                      <input
+                        name="email"
+                        id="emailInput"
+                        placeholder="Email"
+                        type="text"
+                      />
                     </div>
                     <div class="col-12">
-                      <textarea name="message" placeholder="Message"></textarea>
+                      <textarea
+                        name="message"
+                        id="messageInput"
+                        placeholder="Message"
+                      ></textarea>
                     </div>
                     <div class="col-12">
-                      <a
-                        href="#"
+                      <button
+                        type="submit"
                         class="form-button-submit button icon solid fa-envelope"
-                        >Send Message</a
                       >
+                        Send Message
+                      </button>
                     </div>
                   </div>
                 </form>
@@ -385,29 +400,41 @@
                   <div class="col-6 col-12-small">
                     <ul class="icons">
                       <li class="icon solid fa-home">
-                        1234 Somewhere Road<br />
-                        Nashville, TN 00000<br />
-                        USA
+                        Turkey, Istanbul, Beylikdüzü
                       </li>
-                      <li class="icon solid fa-phone">(000) 000-0000</li>
+
                       <li class="icon solid fa-envelope">
-                        <a href="#">info@untitled.tld</a>
+                        <a
+                          href="mailto:ibrahimemreyaz@gmail.com"
+                          target="_blank"
+                          >ibrahimemreyaz@gmail.com</a
+                        >
+                      </li>
+                      <li class="icon brands fa-linkedin">
+                        <a
+                          href="https://www.linkedin.com/in/ibrahim-emre-yaz/"
+                          target="_blank"
+                          >İbrahim Emre Yaz</a
+                        >
                       </li>
                     </ul>
                   </div>
                   <div class="col-6 col-12-small">
                     <ul class="icons">
                       <li class="icon brands fa-twitter">
-                        <a href="#">@untitled</a>
+                        <a href="https://twitter.com/iemreyaz" target="_blank"
+                          >iemreyaz</a
+                        >
                       </li>
                       <li class="icon brands fa-instagram">
-                        <a href="#">instagram.com/untitled</a>
+                        <a href="https://instagram.com/_emreyaz" target="_blank"
+                          >_emreyaz</a
+                        >
                       </li>
-                      <li class="icon brands fa-dribbble">
-                        <a href="#">dribbble.com/untitled</a>
-                      </li>
-                      <li class="icon brands fa-facebook-f">
-                        <a href="#">facebook.com/untitled</a>
+                      <li class="icon brands fa-github">
+                        <a href="https://github.com/emre-yaz" target="_blank"
+                          >Emre-Yaz</a
+                        >
                       </li>
                     </ul>
                   </div>
@@ -426,5 +453,6 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="../Backend/contact_message.js"></script>
   </body>
 </html>
