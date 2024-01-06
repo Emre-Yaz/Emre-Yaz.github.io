@@ -1,14 +1,17 @@
-require("dotenv").config();
+//General
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const path = require("path");
 const app = express();
 const port = 3000;
 const indexRouter = require("./routes/index");
+//Email
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
-const { google } = require("googleapis");
+//Security
 const { body, validationResult } = require("express-validator");
+const validator = require("validator");
+require("dotenv").config();
 
 //const helmet = require("helmet");
 //app.use(helmet());
@@ -31,70 +34,65 @@ app.use(
 app.use("/", indexRouter);
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(express.json()); // Parse JSON bodies
+app.use(express.json());
 
-/////////////////////////////////t//////////
+///////////////////////////////////////////
 
-const oauth2Client = new google.auth.OAuth2(
-  process.env.CLIENT_ID,
-  process.env.CLIENT_SECRET,
-  "https://developers.google.com/oauthplayground" // Redirect URL
-);
-
-oauth2Client.setCredentials({
-  refresh_token: process.env.REFRESH_TOKEN,
-});
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    type: "OAuth2",
-    user: "emreyaztest@gmail.com",
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    refreshToken: process.env.REFRESH_TOKEN,
-    accessToken: oauth2Client.getAccessToken(), // Access token generated from refresh token
-  },
-});
-
+// POST route from contact form
 app.post(
   "/submit-form",
   [
-    body("name").trim().isLength({ min: 1 }).withMessage("Name is required"),
-    body("email").trim().isEmail().withMessage("Valid email is required"),
-    body("message")
-      .trim()
-      .isLength({ min: 1 })
-      .withMessage("Message is required"),
+    // Implement server-side validation
+    body("name").trim().isLength({ min: 1 }).escape(),
+    body("email").trim().isEmail().normalizeEmail(),
+    body("message").trim().isLength({ min: 1 }).escape(),
   ],
   async (req, res) => {
+    // Handle validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+
+    const formData = req.body;
+
+    // Creating a transporter
+    const transporter = nodemailer.createTransport({
+      host: "smtp-mail.outlook.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.USER,
+        pass: process.env.PASS,
+      },
+      tls: {
+        ciphers: "TLSv1.2",
+        rejectUnauthorized: true,
+      },
+    });
+
+    // Extracting form data
+    const { name, email, message } = formData;
+
+    // Email sending logic with form data
+    const mailOptions = {
+      from: process.env.USER,
+      to: "ibrahimemreyaz@gmail.com",
+      subject: "New Message From Contact Form",
+      text: `Name: ${validator.escape(name)}\nEmail: ${validator.escape(
+        email
+      )}\nMessage: ${validator.escape(message)}`,
+    };
+
     try {
-      const name = req.body.name;
-      const email = req.body.email;
-      const message = req.body.message;
-
-      const mailOptions = {
-        from: "emreyaztest@gmail.com",
-        to: "ibrahimemreyaz@gmail.com",
-        subject: "New Message from Contact Form",
-        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-      };
-
-      const info = await transporter.sendMail(mailOptions);
-      console.log("Email sent: " + info.response);
-      res.status(200).send("Message received and email sent successfully!");
+      await transporter.sendMail(mailOptions);
+      res.status(200).send("Message sent successfully!");
     } catch (error) {
-      console.error(error);
-      res.status(500).send("Error sending email");
+      console.error("Error:", error);
+      res.status(500).send("Error sending message. Please try again later.");
     }
   }
 );
-
 ///////////////////////////////////////////
 
 app.listen(process.env.PORT || port);
