@@ -38,6 +38,8 @@ app.use(express.json());
 
 //////////////////////////////////////////
 
+/*
+
 // POST route from contact form
 app.post(
   "/submit-form",
@@ -56,17 +58,34 @@ app.post(
 
     const formData = req.body;
 
-    // Creating a transporter
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.USER,
-        pass: process.env.PASS,
-      },
-    });
+    */
+
+// Creating a transporter
+const transporter = nodemailer.createTransport({
+  host: "smtp.forwardemail.net",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.USER,
+    pass: process.env.PASS,
+  },
+});
+
+async function main() {
+  const info = await transporter.sendMail({
+    from: process.env.USER, // sender address
+    to: "ibrahimemreyaz@gmail.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+}
+
+main().catch(console.error);
+
+/* 
 
     // Extracting form data
     const { name, email, message } = formData;
@@ -90,6 +109,9 @@ app.post(
     }
   }
 );
+
+*/
+
 ///////////////////////////////////////////
 
 app.listen(process.env.PORT || port);
