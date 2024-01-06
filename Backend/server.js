@@ -36,7 +36,7 @@ app.use("/", indexRouter);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-///////////////////////////////////////////
+//////////////////////////////////////////
 
 // POST route from contact form
 app.post(
