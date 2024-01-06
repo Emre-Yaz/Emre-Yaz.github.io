@@ -65,10 +65,7 @@ app.post(
         user: process.env.USER,
         pass: process.env.PASS,
       },
-      tls: {
-        ciphers: "TLSv1.2",
-        rejectUnauthorized: true,
-      },
+      authMethod: "PLAIN",
     });
 
     // Extracting form data
