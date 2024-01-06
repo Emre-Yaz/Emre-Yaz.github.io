@@ -58,14 +58,11 @@ app.post(
 
     // Creating a transporter
     const transporter = nodemailer.createTransport({
-      host: "mail.gmx.com",
-      port: 587,
-      secure: false,
+      service: "gmail",
       auth: {
         user: process.env.USER,
         pass: process.env.PASS,
       },
-      authMethod: "PLAIN",
     });
 
     // Extracting form data
