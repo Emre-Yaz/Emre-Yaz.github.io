@@ -58,7 +58,7 @@ app.post(
 
     // Creating a transporter
     const transporter = nodemailer.createTransport({
-      host: "smtp-mail.outlook.com",
+      host: "mail.gmx.com",
       port: 587,
       secure: false,
       auth: {
