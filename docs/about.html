@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>I. Emre Yaz</title>
+    <title>Emre Yaz</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -16,10 +16,32 @@
       <section id="header">
         <div class="container">
           <!-- Logo -->
-          <h1 id="logo"><a href="index.html">Ibrahim Emre Yaz</a></h1>
-          <p>
-            Backend Developer | Node.js, JavaScript, Back-End Web Development
-          </p>
+
+          <div>
+            <h1 id="logo" style="margin-left: 150px">
+              <a href="index.html">Ibrahim Emre Yaz</a>
+            </h1>
+            <img
+              src="img/emre.JPG"
+              alt="Emre Yaz"
+              width="250"
+              height="300"
+              style="
+                display: block;
+                margin-top: -100px;
+                border: 6px solid #555;
+                border-radius: 50%;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                transition: transform 0.3s ease-in-out;
+              "
+              onmouseover="this.style.transform='rotate(10deg)'; this.style.filter='grayscale(100%)';"
+              onmouseout="this.style.transform=''; this.style.filter='';
+              "
+            />
+            <p style="margin-top: -160px; margin-left: 150px">
+              Backend Developer | Node.js, JavaScript, Back-End Web Development
+            </p>
+          </div>
 
           <!-- Nav -->
           <nav id="nav">
@@ -30,21 +52,28 @@
                 >
               </li>
               <li>
-                <a href="#" class="icon fa-chart-bar"><span>About</span></a>
+                <a class="icon solid fa-user" href="about.html"
+                  ><span>About</span></a
+                >
               </li>
               <li>
-                <a class="icon solid fa-cog" href="left-sidebar.html"
+                <a class="icon solid fa-code" href="projects.html"
                   ><span>My Projects</span></a
                 >
               </li>
               <li>
-                <a class="icon solid fa-retweet" href="right-sidebar.html"
-                  ><span>Interactive Projects</span></a
+                <a class="icon solid fa-book" href="diary.html"
+                  ><span>My Learning Diary</span></a
                 >
               </li>
               <li>
-                <a class="icon solid fa-sitemap" href="no-sidebar.html"
-                  ><span>No Sidebar</span></a
+                <a class="icon solid fa-address-card" href="contact.html"
+                  ><span>Contact Info</span></a
+                >
+              </li>
+              <li>
+                <a href="login.html" style="margin-right: -450px"
+                  ><span>Login/Register</span></a
                 >
               </li>
             </ul>
