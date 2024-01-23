@@ -1,12 +1,6 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Arvo:700");
 
-/*
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 html,
 body,
 div,
@@ -164,6 +158,11 @@ textarea {
 
 html {
   box-sizing: border-box;
+}
+body {
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 *,
@@ -1855,6 +1854,16 @@ table tfoot {
   border-top: solid 2px #e5e5e5;
 }
 
+/* About story */
+
+.abt {
+  text-align: left;
+  text-indent: 20px;
+}
+.abt::first-line {
+  text-indent: 0;
+}
+
 /* Button */
 
 input[type="button"],
@@ -2186,10 +2195,12 @@ button.alt:active,
 
 #features {
   position: relative;
+
   overflow: hidden;
   background: #fff;
   text-align: center;
-  padding: 6em 0;
+  padding-top: 0px;
+  padding-bottom: 50px;
 }
 
 #features p {
@@ -2200,10 +2211,17 @@ button.alt:active,
   margin-top: 1.25em;
 }
 
+.warning {
+  background-color: #d2a029b9;
+  padding: 10px;
+  text-align: center;
+}
+
 /* Banner */
 
 #banner {
   position: relative;
+
   overflow: hidden;
   background: #fff;
   color: #fff;
@@ -2215,7 +2233,7 @@ button.alt:active,
   text-transform: uppercase;
   background: url("../../img/banner.jpg");
   background-size: cover;
-  padding: 10em 0;
+  padding: 150px;
 }
 
 #banner p {
@@ -2233,37 +2251,20 @@ button.alt:active,
 
 #banner > .container {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-#banner > .container:before,
-#banner > .container:after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  width: 35px;
-  height: 141px;
-  margin-top: -70px;
-  background: url("images/bracket.svg");
-  opacity: 0.15;
-}
-
-#banner > .container:before {
-  left: 0;
-}
-
-#banner > .container:after {
-  -moz-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  -ms-transform: scaleX(-1);
-  transform: scaleX(-1);
-  right: 0;
+.micon {
+  width: 90px;
+  margin: 0 50px;
 }
 
 /* Main */
 
 #main {
   position: relative;
+
   overflow: hidden;
   background: #fff;
   padding: 6em 0;
@@ -2309,26 +2310,12 @@ button.alt:active,
 
 #footer {
   position: relative;
+
   overflow: hidden;
   border-top: solid 2px #e5e5e5;
   background: #f0f0f0;
-  padding: 6em 0 8em 0;
-}
-
-#footer form input[type="text"],
-#footer form input[type="email"],
-#footer form input[type="password"],
-#footer form select,
-#footer form textarea {
-  background: #f7f7f7;
-}
-
-#footer form input[type="text"]:focus,
-#footer form input[type="email"]:focus,
-#footer form input[type="password"]:focus,
-#footer form select:focus,
-#footer form textarea:focus {
-  background: #fff;
+  padding-bottom: 20px;
+  padding-top: 30px;
 }
 
 #footer h2 {
