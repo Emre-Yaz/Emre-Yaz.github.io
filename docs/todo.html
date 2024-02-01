@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do App</title>
+
+    <link rel="icon" type="image/png" href="img/favicon.svg" />
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -35,6 +37,41 @@
       #todo-list {
         list-style: none;
         padding: 0;
+      }
+
+      .edit-input {
+        width: 70%;
+        padding: 8px;
+        margin-right: 10px;
+      }
+
+      .edit-btn {
+        background-color: #2196f3;
+        color: #fff;
+        border: none;
+        padding: 8px;
+        cursor: pointer;
+      }
+
+      #new-task-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      #new-task {
+        flex-grow: 1;
+        padding: 8px;
+        margin-right: 10px;
+      }
+
+      #add-btn {
+        background-color: #2196f3;
+        color: #fff;
+        border: none;
+        padding: 8px;
+        cursor: pointer;
       }
 
       .todo-item {
@@ -81,6 +118,51 @@
         background-color: #45a049;
       }
 
+      #toggle-all-btn {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        transition: background-color 0.3s;
+      }
+
+      #toggle-all-btn:hover {
+        background-color: #45a049;
+      }
+
+      #add-btn {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        transition: background-color 0.3s;
+      }
+
+      #add-btn:hover {
+        background-color: #45a049;
+      }
+
+      .todo-item button {
+        background-color: #f44336;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .todo-item button:hover {
+        background-color: #d32f2f;
+        transition: background-color 0.3s;
+      }
+
       @media screen and (max-width: 480px) {
         #todo-container {
           width: 100%;
@@ -108,45 +190,13 @@
   </head>
   <body>
     <div id="todo-container">
-      <h1>Daily To-Do App</h1>
+      <h1>To-Do App</h1>
 
       <button id="toggle-all-btn" onclick="uncheckAll()">Clear</button>
 
-      <ul id="todo-list">
-        <li class="todo-item">
-          <input type="checkbox" />
-          <span>Daily Care</span>
-        </li>
-        <li class="todo-item">
-          <input type="checkbox" />
-          <span>Book</span>
-        </li>
-        <li class="todo-item">
-          <input type="checkbox" />
-          <span>Excercise</span>
-        </li>
-        <li class="todo-item">
-          <input type="checkbox" />
-          <span>Healthy Breakfast</span>
-        </li>
-
-        <li class="todo-item">
-          <input type="checkbox" />
-          <span>Coding</span>
-        </li>
-        <li class="todo-item">
-          <input type="checkbox" />
-          <span>Healthy Dinner</span>
-        </li>
-        <li class="todo-item">
-          <input type="checkbox" />
-          <span>Freetime</span>
-        </li>
-        <li class="todo-item">
-          <input type="checkbox" />
-          <span>Prebed</span>
-        </li>
-      </ul>
+      <ul id="todo-list"></ul>
+      <input type="text" id="new-task" placeholder="Enter new task" />
+      <button id="add-btn" onclick="addTask()">Add</button>
     </div>
 
     <script>
@@ -157,6 +207,61 @@
         checkboxes.forEach(function (checkbox) {
           checkbox.checked = false;
         });
+      }
+    </script>
+    <script>
+      function editTask(element) {
+        var listItem = element.parentElement;
+        var textElement = listItem.querySelector(".todo-item span");
+
+        var editInput = document.createElement("input");
+        editInput.type = "text";
+        editInput.value = textElement.textContent;
+        editInput.classList.add("edit-input");
+
+        var saveButton = document.createElement("button");
+        saveButton.innerHTML = "Save";
+        saveButton.classList.add("edit-btn");
+        saveButton.onclick = function () {
+          textElement.textContent = editInput.value;
+          listItem.removeChild(editInput);
+          listItem.removeChild(saveButton);
+        };
+
+        listItem.appendChild(editInput);
+        listItem.appendChild(saveButton);
+      }
+    </script>
+    <script>
+      function addTask() {
+        var inputField = document.getElementById("new-task");
+        var taskText = inputField.value.trim();
+
+        if (taskText !== "") {
+          var todoList = document.getElementById("todo-list");
+          var listItem = document.createElement("li");
+          listItem.className = "todo-item";
+
+          var checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+
+          var span = document.createElement("span");
+          span.textContent = taskText;
+
+          var deleteButton = document.createElement("button");
+          deleteButton.innerHTML = "Delete";
+          deleteButton.onclick = function () {
+            todoList.removeChild(listItem);
+          };
+
+          listItem.appendChild(checkbox);
+          listItem.appendChild(span);
+          listItem.appendChild(deleteButton);
+
+          todoList.appendChild(listItem);
+
+          inputField.value = "";
+        }
       }
     </script>
   </body>
