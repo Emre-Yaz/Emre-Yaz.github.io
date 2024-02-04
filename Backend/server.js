@@ -73,11 +73,11 @@ const transporter = nodemailer.createTransport({
 
 async function main() {
   const info = await transporter.sendMail({
-    from: process.env.USER, // sender address
-    to: "ibrahimemreyaz@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    from: process.env.USER, 
+    to: "ibrahimemreyaz@gmail.com", 
+    subject: "Hello ✔", 
+    text: "Hello world?", 
+    html: "<b>Hello world?</b>", 
   });
 
   console.log("Message sent: %s", info.messageId);
