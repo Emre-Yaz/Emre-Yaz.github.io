@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+  </head>
+  <body>
+    <form
+      id="loginForm"
+      action="index.html"
+      method="post"
+      onsubmit="return validateForm()"
+    >
+      <label for="username">Username:</label><br />
+      <input type="text" id="username" name="username" /><br />
+      <label for="password">Password:</label><br />
+      <input type="password" id="password" name="password" /><br /><br />
+      <button type="submit">Login</button>
+    </form>
+
+    <script>
+      function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Check if both username and password are correct
+        if (username === "emre" && password === "password") {
+          return true; // Allow form submission
+        } else {
+          alert("Invalid username or password!");
+          return false; // Prevent form submission
+        }
+      }
+    </script>
+  </body>
+</html>
