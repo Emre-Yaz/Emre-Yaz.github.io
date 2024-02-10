@@ -305,21 +305,21 @@
       </section>
     </div>
 
-    <script src="https://form.jotform.com/s/umd/latest/for-cardform-feedback-embed.js"></script>
-    <script>
-      new JF_FeedbackEmbedButton({
-        buttonIcon: "envelope",
-        buttonFontColor: "#FFFFFF",
-        buttonBackgroundColor: "#FD887A",
-        formId: 240056577186058,
-        buttonText: "Contact Me!",
-        buttonSide: "Bottom",
-        buttonAlign: "Right",
-        base: "https://form.jotform.com/",
-      });
-    </script>
+    <iframe
+      id="JotFormIFrame-240056577186058"
+      title="Contact Form"
+      onload="window.parent.scrollTo(0,0)"
+      allowtransparency="true"
+      allowfullscreen="true"
+      allow="geolocation; microphone; camera"
+      src="https://form.jotform.com/240056577186058"
+      frameborder="0"
+      style="min-width: 100%; max-width: 100%; height: 539px; border: none"
+      scrolling="no"
+    >
+    </iframe>
     <script type="text/javascript">
-      var ifr = document.getElementById("lightbox-240056577186058");
+      var ifr = document.getElementById("JotFormIFrame-240056577186058");
       if (ifr) {
         var src = ifr.src;
         var iframeParams = [];
@@ -345,9 +345,11 @@
         }
         var args = e.data.split(":");
         if (args.length > 2) {
-          iframe = document.getElementById("lightbox-" + args[args.length - 1]);
+          iframe = document.getElementById(
+            "JotFormIFrame-" + args[args.length - 1]
+          );
         } else {
-          iframe = document.getElementById("lightbox");
+          iframe = document.getElementById("JotFormIFrame");
         }
         if (!iframe) {
           return;
